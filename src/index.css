@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Color Tokens based on Parroto Design Analysis */
+    --background: 255 255 255;
+    --foreground: 26 26 46;
+    
+    --card: 255 255 255;
+    --card-foreground: 26 26 46;
+    
+    --popover: 255 255 255;
+    --popover-foreground: 26 26 46;
+    
+    /* Primary: Deep Navy (#262c57) */
+    --primary: 38 44 87;
+    --primary-foreground: 255 255 255;
+    --primary-dark: 22 28 65;
+    
+    /* Secondary / Accent: Electric Cyan-Blue (#3c94d4) */
+    --secondary: 60 148 212;
+    --secondary-foreground: 255 255 255;
+    --secondary-dark: 30 100 165;
+    
+    /* Muted: Soft ice blue tint (#f0f4ff) */
+    --muted: 240 244 255;
+    --muted-foreground: 74 85 104;
+    --muted-dark: 214 220 240;
+    
+    --accent: 60 148 212;
+    --accent-foreground: 255 255 255;
+    --accent-dark: 30 100 165;
+    
+    --destructive: 229 62 62;
+    --destructive-foreground: 255 255 255;
+    
+    --success: 34 197 94;
+    --success-foreground: 255 255 255;
+    
+    /* Hairline borders (#e2e8f0) */
+    --border: 226 232 240;
+    --border-dark: 199 210 224;
+    
+    --ring: 38 44 87;
+  }
+
+  .dark {
+    --background: 26 26 46;
+    --foreground: 247 250 252;
+    
+    --card: 32 38 68;
+    --card-foreground: 247 250 252;
+    
+    --popover: 32 38 68;
+    --popover-foreground: 247 250 252;
+    
+    --primary: 60 148 212;
+    --primary-foreground: 255 255 255;
+    --primary-dark: 30 100 165;
+    
+    --secondary: 38 44 87;
+    --secondary-foreground: 247 250 252;
+    --secondary-dark: 22 28 65;
+    
+    --muted: 38 44 87;
+    --muted-foreground: 147 197 253;
+    --muted-dark: 22 28 65;
+    
+    --accent: 60 148 212;
+    --accent-foreground: 255 255 255;
+    
+    --border: 45 55 95;
+    --border-dark: 35 42 75;
+    
+    --ring: 60 148 212;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-brand-blue selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+@layer components {
+  /* =========================================================================
+     CONTAINERS & LAYOUT
+     ========================================================================= */
+  .container-app {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+  }
+
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 w-full;
+  }
+
+  .section-spacing {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24 relative;
+  }
+
+  /* =========================================================================
+     BUTTON PRIMITIVES (Parroto-inspired pill & duo-rounded buttons)
+     ========================================================================= */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* Hero Pill Primary CTA */
+  .btn-pill-hero {
+    @apply btn-base text-base sm:text-lg rounded-full h-14 px-8 bg-gradient-to-r from-primary to-primary/85 text-primary-foreground shadow-card hover:scale-105 hover:shadow-glow-primary active:scale-95;
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply btn-base text-sm rounded-xl h-11 px-5 bg-primary text-primary-foreground hover:bg-primary-dark hover:scale-[1.02] hover:shadow-md active:scale-95;
+  }
+
+  /* Secondary Accent Button */
+  .btn-secondary {
+    @apply btn-base text-sm rounded-xl h-11 px-5 bg-secondary text-secondary-foreground hover:bg-secondary-dark hover:scale-[1.02] hover:shadow-glow active:scale-95;
+  }
+
+  /* Outlined Button */
+  .btn-outline {
+    @apply btn-base text-sm rounded-xl h-11 px-5 bg-card/80 border border-border text-foreground hover:bg-muted hover:border-secondary transition-colors;
+  }
+
+  /* Ghost / Nav Link Button */
+  .btn-ghost {
+    @apply btn-base text-sm rounded-lg py-2 px-3.5 text-muted-foreground hover:bg-muted hover:text-primary transition-colors;
+  }
+
+  /* =========================================================================
+     CARDS & SURFACES (Parroto-inspired interactive surfaces)
+     ========================================================================= */
+  .card-interactive {
+    @apply relative flex flex-col p-6 sm:p-8 bg-card/90 backdrop-blur-sm rounded-2xl border border-border shadow-card transition-all duration-300 hover:shadow-card-hover hover:scale-[1.02] hover:border-secondary/40;
+  }
+
+  .card-flat {
+    @apply bg-card rounded-2xl border border-border p-6 shadow-subtle;
+  }
+
+  .card-muted {
+    @apply bg-muted/70 rounded-2xl border border-border/60 p-6;
+  }
+
+  /* =========================================================================
+     BADGES & PILLS
+     ========================================================================= */
+  .badge-pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-colors;
+  }
+
+  .badge-primary {
+    @apply badge-pill bg-brand-ice text-primary border border-primary/10;
+  }
+
+  .badge-accent {
+    @apply badge-pill bg-blue-50 text-brand-blue border border-blue-100;
+  }
+
+  .badge-success {
+    @apply badge-pill bg-emerald-50 text-emerald-700 border border-emerald-100;
+  }
+
+  /* =========================================================================
+     ICON BOXES & GRADIENTS
+     ========================================================================= */
+  .icon-box-gradient {
+    @apply p-3.5 rounded-2xl bg-gradient-to-br from-primary to-secondary text-white w-fit shadow-md transition-transform duration-300 group-hover:scale-110;
+  }
+
+  .gradient-text-brand {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-secondary;
+  }
+}
